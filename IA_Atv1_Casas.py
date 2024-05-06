@@ -1,4 +1,4 @@
-#Descobrdor de Valor de Casas <(DVC)>
+#Descobridor de Valor de Casas <(DVC)>
 #import ast
 #Pode processar os dados, nesse caso prefiri mais comedimento.
 #A pesquisa desse método foi por agnição.
