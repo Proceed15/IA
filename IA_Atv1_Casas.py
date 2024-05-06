@@ -1,6 +1,6 @@
 #Descobridor do Valor das Casas <(DVC)>
 #import ast
-#Pode processar os dados, nesse caso prefiri mais comedimento.
+#Pode processar os dados, nesse caso prefiri mais comedimento
 #A pesquisa desse método foi por agnição, os preços estão em dólares ($)
 
 def Casas():
