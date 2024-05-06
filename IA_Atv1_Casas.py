@@ -19,7 +19,7 @@ def Estimativa_do_preco_de_casas(num_de_quartos, dimensoes, vizinhanca):
  preco = 0
 # Uma pitada disso
  preco += num_de_quartos * 0.123
-# Uma melhor pitada disso
+# Uma pitada melhor disso
  preco += dimensoes * 0.41
 # Talvez uma pitada disso
  preco += vizinhanca * 0.57
