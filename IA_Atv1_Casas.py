@@ -1,7 +1,7 @@
-#Descobridor de Valor de Casas <(DVC)>
+#Descobridor do Valor das Casas <(DVC)>
 #import ast
 #Pode processar os dados, nesse caso prefiri mais comedimento.
-#A pesquisa desse método foi por agnição.
+#A pesquisa desse método foi por agnição, os preços estão em dólares ($)
 
 def Casas():
     print("Bem-vindo(a) ao Descobridor de Valor!")
