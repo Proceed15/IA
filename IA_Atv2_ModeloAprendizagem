@@ -1,0 +1,87 @@
+# -*- coding: utf-8 -*-
+
+"""
+Baseado no exemplo da tflearn publicado aqui:
+https://github.com/tflearn/tflearn/blob/master/examples/images/convnet_cifar10.py
+"""
+from __future__ import division, print_function, absolute_import
+
+#Esse algoritmo pode demorar muuito para carregar dependo de onde estiver utilizando.
+#Algoritmo de análise usado para passáros.
+
+# Importa tflearn e algumas outras seções para ajudar
+import tflearn
+from tflearn.data_utils import shuffle
+from tflearn.layers.core import input_data, dropout, fully_connected
+from tflearn.layers.conv import conv_2d, max_pool_2d
+from tflearn.layers.estimator import regression
+from tflearn.data_preprocessing import ImagePreprocessing
+from tflearn.data_augmentation import ImageAugmentation
+import pickle
+
+# Para carregar o conjunto de dados para o treinamento
+X, Y, X_test, Y_test = pickle.load(open("full_dataset.pkl", "rb"))
+
+# Embaralha esses dados
+X, Y = shuffle(X, Y)
+
+# Verifica se os dado estão normalizados (precaução)
+img_prep = ImagePreprocessing()
+img_prep.add_featurewise_zero_center()
+img_prep.add_featurewise_stdnorm()
+
+# Cria dados extra sintéticos para treino, sacudindo, girando e borrando as
+# imagens que iremos utilizar no data set
+img_aug = ImageAugmentation()
+img_aug.add_random_flip_leftright()
+img_aug.add_random_rotation(max_angle=25.)
+img_aug.add_random_blur(sigma_max=3.)
+
+# DEFINE a arquitetura de rede:
+
+# O que será inserido é uma imagem 32X32 com 3 canais de cores (vermelho, verde e azul)
+network = input_data(shape=[None, 32, 32, 3],
+                     data_preprocessing=img_prep,
+                     data_augmentation=img_aug)
+
+# Passo 1: Convolução
+network = conv_2d(network, 32, 3, activation='relu')
+
+# Passo 2: Max pooling (Mudança de local da parte relevante da imagem)
+network = max_pool_2d(network, 2)
+
+# Passo 3: Convolução novamente
+network = conv_2d(network, 64, 3, activation='relu')
+
+# Passo 4: Convolução mais uma vez
+network = conv_2d(network, 64, 3, activation='relu')
+
+# Passo 5: Max pooling novamente (é bom repetir para melhores resultados)
+network = max_pool_2d(network, 2)
+
+# Passo 6: Rede neural de 512 nodes totalmente conectadas (Como se fossem Neurônios)
+network = fully_connected(network, 512, activation='relu')
+
+# Passo 7: Derrubada - Tira alguns dados inseridos de forma aleátoria, ajuda a previnir sobrecarga e (consequente) mal-funcionamento
+network = dropout(network, 0.5)
+
+# Passo 8: Rede neural totalmente conectada com 2 resultados (0=não é um pássaro, 1=é um pássaro) para realizar a interpretação final
+network = fully_connected(network, 2, activation='softmax')
+
+# Issso diz ao tflearn como nós queremos treinar o a rede que será usada.
+network = regression(network, optimizer='adam',
+                     loss='categorical_crossentropy',
+                     learning_rate=0.001)
+
+# Compacte a rede em um modelo que será um objeto a ser usado depois
+model = tflearn.DNN(network, tensorboard_verbose=0, checkpoint_path='bird-classifier.tfl.ckpt')
+
+# Hora de treinar! Assim podemos monitorar os resultados de 100 interações por vez.
+model.fit(X, Y, n_epoch=100, shuffle=True, validation_set=(X_test, Y_test),
+          show_metric=True, batch_size=96,
+          snapshot_epoch=True,
+          run_id='bird-classifier')
+
+# Salva o modelo quando completo em um arquivo (para avaliar)
+model.save("bird-classifier.tfl")
+print("Network trained and saved as bird-classifier.tfl!")
