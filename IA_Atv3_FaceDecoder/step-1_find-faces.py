@@ -2,35 +2,35 @@ import sys
 import dlib
 from skimage import io
 
-# Take the image file name from the command line -->put the full path.
+# Pegue a imagem (nome.extensão) da linha de comando --> de preferência o caminho completo.
 file_name = sys.argv[1]
 
-# Create a HOG face detector using the built-in dlib class
+# Cria uma detector de faces HOG usando a biblioteca nativa dlib.
 face_detector = dlib.get_frontal_face_detector()
 
 win = dlib.image_window()
 
-# Load the image into an array
+# Carregue a imagem dentro de uma lista (um array).
 image = io.imread(file_name)
 
-# Run the HOG face detector on the image data.
-# The result will be the bounding boxes of the faces in our image.
+# Rode o detector de imagens HOG na imagem.
+# O resultado será as bordas em forma de caixa das faces na imagem.
 detected_faces = face_detector(image, 1)
 
 print("I found {} faces in the file {}".format(len(detected_faces), file_name))
 
-# Open a window on the desktop showing the image
+# Abra uma janela na área de trabalho mostrando a imagem.
 win.set_image(image)
 
-# Loop through each face we found in the image
+# Passa em loop por todas as fazes que encontramos na imagem.
 for i, face_rect in enumerate(detected_faces):
 
-	# Detected faces are returned as an object with the coordinates 
-	# of the top, left, right and bottom edges
+	# As faces detectadas são retornadas em um object com suas coordenadas...
+	# Do topo, da esquerda, da direita e das margens inferiores.
 	print("- Face #{} found at Left: {} Top: {} Right: {} Bottom: {}".format(i, face_rect.left(), face_rect.top(), face_rect.right(), face_rect.bottom()))
 
-	# Draw a box around each face we found
+	# Desenha uma caixa envolta de todas as faces encontradas;
 	win.add_overlay(face_rect)
 	        
-# Wait until the user hits <enter> to close the window	        
+# Espera até o usuário apertar a tecla Enter para fechar a janela.	        
 dlib.hit_enter_to_continue()
