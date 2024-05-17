@@ -2,47 +2,49 @@ import sys
 import dlib
 from skimage import io
 
-# You can download the required pre-trained face detection model here:
+# Você pode baixar e instaar o modelo de detecção de faces (do dlib), já pré-treinado e necessário a essa atividade, aqui:
 # http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
+# Irá automaticamente baixar o arquivo, deixei o zip caso prefira baixar desse repositório nesta pasta.
+
 predictor_model = "shape_predictor_68_face_landmarks.dat"
 
-# Take the image file name from the command line
+# Pega o nome do arquivo de imagem da linha de comando (CMD prompt).
 file_name = sys.argv[1]
 
-# Create a HOG face detector using the built-in dlib class
+# Cria o detector de faces HOG usando a já implatada classe do dlib (por isso e mais é importante instalá-la em seu computador antes).
 face_detector = dlib.get_frontal_face_detector()
 face_pose_predictor = dlib.shape_predictor(predictor_model)
 
 win = dlib.image_window()
 
-# Take the image file name from the command line
+# Pega o nome do arquivo de imagem da linha de comando (CMD prompt).
 file_name = sys.argv[1]
 
-# Load the image
+# Carrega a imagem.
 image = io.imread(file_name)
 
-# Run the HOG face detector on the image data
+# Usa o detector de faces HOG nos dados da imagem.
 detected_faces = face_detector(image, 1)
 
 print("Found {} faces in the image file {}".format(len(detected_faces), file_name))
 
-# Show the desktop window with the image
+# Mostra a janela na área de trabalho com a imagem.
 win.set_image(image)
 
-# Loop through each face we found in the image
+# Faz uma verificação (loop) perante cada face que encontrou na imagem (até encontrar uma ou mais).
 for i, face_rect in enumerate(detected_faces):
 
-	# Detected faces are returned as an object with the coordinates 
-	# of the top, left, right and bottom edges
+	# As faces identificadas são retornadas como um objeto com... 
+	# coordenadas da parte de cima, esquerda, direita e partes inferiores.
 	print("- Face #{} found at Left: {} Top: {} Right: {} Bottom: {}".format(i, face_rect.left(), face_rect.top(), face_rect.right(), face_rect.bottom()))
 
-	# Draw a box around each face we found
+	# Desenha uma caixa envolta de cada face identificada.
 	win.add_overlay(face_rect)
 
-	# Get the the face's pose
+	# Pega a posição em que a face está (de lado, centralizada).
 	pose_landmarks = face_pose_predictor(image, face_rect)
 
-	# Draw the face landmarks on the screen.
+	# Eoncontra os marcos do rosto na tela (nesse caso 68, podem ser até 93).
 	win.add_overlay(pose_landmarks)
 	        
 dlib.hit_enter_to_continue()
