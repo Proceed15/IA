@@ -31,7 +31,7 @@ print("Found {} faces in the image file {}".format(len(detected_faces), file_nam
 # Mostra a janela na área de trabalho com a imagem.
 win.set_image(image)
 
-# Faz uma verificação (loop) perante cada face que encontrou na imagem (até encontrar uma ou mais).
+# Faz uma verificação (loop) perante cada face que encontrou na imagem (até encontrar alguma).
 for i, face_rect in enumerate(detected_faces):
 
 	# As faces identificadas são retornadas como um objeto com... 
