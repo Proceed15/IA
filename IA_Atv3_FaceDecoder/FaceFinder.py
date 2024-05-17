@@ -4,7 +4,7 @@ from skimage import io
 
 # Você pode baixar e instaar o modelo de detecção de faces (do dlib), já pré-treinado e necessário a essa atividade, aqui:
 # http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
-# Irá automaticamente baixar o arquivo, deixei o zip caso prefira baixar desse repositório nesta pasta.
+# Irá automaticamente baixar o arquivo.
 
 predictor_model = "shape_predictor_68_face_landmarks.dat"
 
