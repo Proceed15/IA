@@ -44,7 +44,7 @@ for i, face_rect in enumerate(detected_faces):
 	# Pega a posição em que a face está (de lado, centralizada).
 	pose_landmarks = face_pose_predictor(image, face_rect)
 
-	# Eoncontra os marcos do rosto na tela (nesse caso 68, podem ser até 93).
+	# Encontra os marcos do rosto na tela (nesse caso 68, podem ser até 93).
 	win.add_overlay(pose_landmarks)
 	        
 dlib.hit_enter_to_continue()
