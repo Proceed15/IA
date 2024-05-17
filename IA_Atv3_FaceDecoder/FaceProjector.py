@@ -5,7 +5,7 @@ import openface
 
 # Você pode baixar e instaar o modelo de detecção de faces (do dlib), já pré-treinado e necessário a essa atividade, aqui:
 # http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
-# Irá automaticamente baixar o arquivo, deixei o zip caso prefira baixar desse repositório nesta pasta.
+# Irá automaticamente baixar o arquivo.
 predictor_model = "shape_predictor_68_face_landmarks.dat"
 
 # Pega o nome do arquivo de imagem da linha de comando (CMD prompt).
@@ -37,7 +37,7 @@ for i, face_rect in enumerate(detected_faces):
 	# Pega a posição em que a face está (de lado, centralizada).
 	pose_landmarks = face_pose_predictor(image, face_rect)
 	
-	# Nesta etapa precisamos ter utilizado o algoritmo do FaceFinder para encontrar os marcos do rosto na imagem.
+	# Nesta etapa recomendo ter utilizado previamente o algoritmo do FaceFinder para encontrar os marcos do rosto na imagem.
 	# Usa openface para calcular os marcos do rosto e fazer um alinhamento centralizado desta face.
 	alignedFace = face_aligner.align(534, image, face_rect, landmarkIndices=openface.AlignDlib.OUTER_EYES_AND_NOSE)
 
