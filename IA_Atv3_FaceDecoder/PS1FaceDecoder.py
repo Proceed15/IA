@@ -22,7 +22,7 @@ print("I found {} faces in the file {}".format(len(detected_faces), file_name))
 # Abra uma janela na área de trabalho mostrando a imagem.
 win.set_image(image)
 
-# Passa em loop por todas as fazes que encontramos na imagem.
+# Passa em loop por todas as faces que encontramos na imagem.
 for i, face_rect in enumerate(detected_faces):
 
 	# As faces detectadas são retornadas em um object com suas coordenadas...
