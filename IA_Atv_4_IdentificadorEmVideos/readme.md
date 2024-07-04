@@ -11,7 +11,7 @@ https://www.python.org/
 # Referencia Twillio
 Link: https://www.twilio.com/en-us
 # Observações
-O algoritmo na versão final se faz presente no arquivo 
+O algoritmo na versão final se faz presente no arquivo IdentificadorDeVagasPorVideoSRC1.py\n
 Partes do algoritmo foram separadas e adicionadas por se tratarem de trabalhos anteriores
 # Conclusão
 A idéia pode ser utilizada de diversas formas para identificação de objetos em filmagens,
