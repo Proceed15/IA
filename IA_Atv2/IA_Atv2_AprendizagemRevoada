@@ -1,6 +1,7 @@
  # -*- coding: utf-8 -*-
 from __future__ import division, print_function, absolute_import
-#Programa para usar o algoritmo anterior, o qual ainda precisa dos dados que serão utilizados para o treinamento dessa IA.
+#Programa para usar o algoritmo anterior, no arquivo IA_Atv2_ModeloAprendizagem.py,
+#Ao qual ainda precisa dos dados que serão utilizados para o treinamento dessa IA.
 
 import tflearn
 from tflearn.layers.core import input_data, dropout, fully_connected
