@@ -3,7 +3,9 @@ Consiste na elaboração de um algoritmo em Python para rodar encima de uma grav
 Visualiza, Analiza e Calcula o espaçamento na vaga para determinar se está preenchida ou não e envia uma notificaçao</br>
 via SMS caso a vaga esteja livre a partir do Twillio
 # Especificações necessárias para rodar o projeto
-Instalar o Python 3.6 ou uma versão superior do Python 3, Matterport Mask R-CNN e OpenCV</br>
+Instalar o Python 3.6 ou uma versão superior do Python 3</br> 
+Instalar o Matterport Mask R-CNN</br>
+Instalar o OpenCV</br>
 Ter uma conta no Twillio para usar o código diretamente, senão ter o conhecimento necessário para realizar</br>
 suas próprias alterações a depender da ferramente que quiser utilizar para a funconalidade da notificação
 # Referencia Python
