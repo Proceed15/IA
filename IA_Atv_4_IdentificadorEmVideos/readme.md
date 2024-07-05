@@ -9,7 +9,7 @@ Instalar o Matterport Mask R-CNN</br>
 Instalar o OpenCV</br>
 Ter uma conta no Twillio para usar o código que já está feito diretamente, ou realizar suas próprias alterações a depender da ferramente que quiser utilizar para a funcionalidade da notificação. Se não quiser essa funcionalidade pode se basear no código dos arquivos: IdentificadorDeVagasPorVideoA.py e CalculaEspaçoParcialVagas.py, mesclando-o para ficarem semelhantes com o arquivo do código principal: IdentificadorDeVagasPorVideoSRC1.py
 # Referencia Python
-https://www.python.org/
+Link: https://www.python.org/
 # Referencia Twillio
 Link: https://www.twilio.com/en-us
 # Observações
