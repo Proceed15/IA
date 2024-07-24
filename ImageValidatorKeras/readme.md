@@ -1,7 +1,7 @@
 # Projeto Modelo Identificador de Imagens Keras com Aprendizagem
 Consiste em um algoritmo para usar um modelo de identificação de imagens</br>
 Visualiza, Analiza e Calcula as dimensões da imagem para saber se ela é autêntica a tal objeto ou não</br>
-Ajuda a previnir ataques cibernéticos a redes neurais se usada corretamente.
+Ajuda a prevenir ataques cibernéticos a redes neurais se usada corretamente.
 ## Primeira Etapa: Python_Keras_Cat
 A atividade nesse caso está como um algoritmo funcional na Primeira Etapa, o "Python_Keras_Cat",</br>
 foi analisada uma imagem de um gato e determinada com sucesso era de fato um gato.
