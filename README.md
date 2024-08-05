@@ -1,4 +1,4 @@
-# IA
+# IA pt-br AI
 Desenvolvimento de Atividades usando Inteligencia Artificial em Python.</br>
 # Atividades
 Em geral algumas atividades simples realizadas há algum tempo,</br>
